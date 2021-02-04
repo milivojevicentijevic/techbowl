@@ -1,3 +1,23 @@
+<?php
+    if(isset($_POST['submit']) && $_POST['submit'] != '') {
+
+        require_once 'includes/db.php';
+
+        $first_name = (!empty($_POST['first_name'])) ? $_POST['first_name'] : '';
+        $last_name = (!empty($_POST['last_name'])) ? $_POST['last_name'] : '';
+        $gender = (!empty($_POST['gender'])) ? $_POST['gender'] : '';
+        $email = (!empty($_POST['email'])) ? $_POST['email'] : '';
+        $course = (!empty($_POST['course'])) ? $_POST['course'] : '';
+
+        $sql = "INSERT INTO students (first_name, last_name, email, gender, course) VALUES ('$first_name','$last_name','$email','$gender','$course')";
+        $result = mysqli_query($conn, $sql);
+        if ($result) {
+            echo "Record has been saved"; die;
+        }
+
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php include 'partial/head.php'; ?>
@@ -25,7 +45,7 @@
                         <select class="form-select" id="gender" name="gender" >
                             <option selected>Select Gender</option>
                             <option value="Male">Male</option>
-                            <option value="Female">female</option>
+                            <option value="Female">Female</option>
                         </select>
                     </div>
                 </div>
@@ -47,7 +67,7 @@
                 </div>
                 <div class="form-group row mb-3">
                     <div class="col-sm-7">
-                        <button type="submit" class="btn btn-success">SUBMIT</button>
+                        <input type="submit" name="submit" class="btn btn-success" value="SUBMIT">
                     </div>
                 </div>
             </form>
