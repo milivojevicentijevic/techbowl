@@ -12,13 +12,15 @@
         if(!empty($id)) {
             // update the record
             $sql = "UPDATE students SET first_name='$first_name', last_name='$last_name', email='$email', gender='$gender', course='$course' WHERE id='$id'";
+            $msg = "update";
         } else {
             $sql = "INSERT INTO students (first_name, last_name, email, gender, course) VALUES ('$first_name','$last_name','$email','$gender','$course')";
+            $msg = "add";
         }
 
         $result = mysqli_query($conn, $sql);
         if ($result) {
-            echo "Record has been saved";
+            header('location: index.php?msg='.$msg);
         }
     }
 

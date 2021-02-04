@@ -3,6 +3,14 @@
     $sql = "SELECT * FROM students";
     $results = mysqli_query($conn, $sql);
     $records = mysqli_num_rows($results);
+    $msg = '';
+    if (!empty($_GET['msg'])) {
+        $msg = $_GET['msg'];
+        $alert_msg = ($msg == "add") ? "New record has been added successfully!" : "Record has been updated successfully!";
+    } else {
+        $alert_msg = '';
+    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +19,9 @@
 <body>
     <?php include 'partial/nav.php'; ?>
     <div class="container">
+        <?php if (!empty($alert_msg)) :  ?>
+            <div class="alert alert-success"><?php echo $alert_msg; ?></div>
+        <?php endif; ?>
         <div class="info"></div>
         <table class="table">
             <thead>
