@@ -35,8 +35,8 @@
                                     <td><?php echo $row['email']; ?></td>
                                     <td><?php echo $row['course']; ?></td>
                                     <td>
-                                        <a href="/" class="btn btn-primary">EDIT</a>
-                                        <a href="/" class="btn btn-danger">DELETE</a>
+                                        <a href="add.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">EDIT</a>
+                                        <a href="delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger">DELETE</a>
                                     </td>
                                 </tr>
                             <?php
