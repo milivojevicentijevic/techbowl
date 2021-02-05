@@ -6,7 +6,7 @@
     $msg = '';
     if (!empty($_GET['msg'])) {
         $msg = $_GET['msg'];
-        $alert_msg = ($msg == "add") ? "New record has been added successfully!" : "Record has been updated successfully!";
+        $alert_msg = ($msg == "add") ? "New record has been added successfully!" : (($msg == 'del') ? "Record has been deleted successfully!" : "Record has been updated successfully!");
     } else {
         $alert_msg = '';
     }
@@ -47,7 +47,7 @@
                                     <td><?php echo $row['course']; ?></td>
                                     <td>
                                         <a href="add.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">EDIT</a>
-                                        <a href="delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger">DELETE</a>
+                                        <a href="delete.php?id=<?php echo $row['id']; ?>" class="btn btn-danger" onClick="javascript:return confirm('Do you really want to delete?')">DELETE</a>
                                     </td>
                                 </tr>
                             <?php
